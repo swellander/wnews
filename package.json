@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "DATA_BASE_URL=postgres://localhost/wnews2 nodemon node_modules/.bin/mocha",
+    "test": "DATABASE_URL=postgres://localhost/wnews2 nodemon node_modules/.bin/mocha",
     "start": "node server.js",
-    "start:dev": "DATA_BASE_URL=postgres://localhost/wnews2 nodemon server.js"
+    "start:dev": "DATABASE_URL=postgres://localhost/wnews2 nodemon server.js"
   },
   "keywords": [],
   "author": "",
