@@ -46,8 +46,10 @@ describe('getAllPosts', () => {
 
 describe('getAllPostsByUserId', () => {
   it('returns posts from specified user', async () => {
-    const posts = await db.getAllPostsByUserId(2);
+    const posts = await db.getAllPostsByUserId(3);
     expect(posts).to.be.an('array');
+    expect(posts).to.have.length(1);
+    expect(posts[0].title).to.equal('Cracking the Aurologist Interview');
   })
 })
 

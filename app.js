@@ -5,8 +5,13 @@ const db = require('./db');
 
 
 
-app.get('/', (req, res) => {
-  res.send(postList([]));
+app.get('/', async (req, res, next) => {
+  try {
+    const dataArr = await db.getAllPosts();
+    res.send(postList(dataArr));
+  } catch(err) {
+    next(err);
+  }
 })
 
 
