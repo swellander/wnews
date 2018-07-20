@@ -1,0 +1,20 @@
+{
+  "name": "news_clone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "DATA_BASE_URL=postgres://localhost/wnews2 nodemon node_modules/.bin/mocha",
+    "start:dev": "DATA_BASE_URL=postgres://localhost/wnews2 nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "express": "^4.16.3",
+    "mocha": "^5.2.0",
+    "node-time-ago": "^1.0.0",
+    "pg": "^7.4.3"
+  }
+}
