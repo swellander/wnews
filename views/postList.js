@@ -23,7 +23,7 @@ module.exports = (dataArr) => {
             ${post.upvotes} upvotes | ${timeAgo(Date.now() + Date.now() - post.date)}
           </small>
         </div>`}
-      )}
+      ).join('')}
     </div>
   </body>
   </html>`;

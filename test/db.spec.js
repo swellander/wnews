@@ -44,6 +44,17 @@ describe('getAllPosts', () => {
   });
 });
 
+describe('getPostById', () => {
+  it('returns an object', async () => {
+    const post = await db.getPostById(2);
+    expect(post).to.be.an('object');
+  });
+  it('returns the specified post', async () => {
+    const post = await db.getPostById(2);
+    expect(post.title).to.equal('Untransfiguration classes to become compulsory at Hogwarts');
+  })
+})
+
 describe('getAllPostsByUserId', () => {
   it('returns posts from specified user', async () => {
     const posts = await db.getAllPostsByUserId(3);

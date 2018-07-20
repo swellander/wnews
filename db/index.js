@@ -35,8 +35,50 @@ const getUserById = async (userId) => {
 
 const getAllPosts = async () => {
   try {
-    const data = await client.query('SELECT * FROM posts');
+    const sql = `
+    SELECT *
+    FROM 
+      users
+      inner JOIN
+      posts 
+      on users.id = posts.userid
+      left join
+    
+        (
+          select count(postid) as upvotes, postid
+          from upvotes
+          group by postid
+        ) as upvotes
+    
+      on posts.id = upvotes.postid`;
+    const data = await client.query(sql);
     return data.rows;
+  } catch(err) {
+    throw err;
+  }
+}
+
+const getPostById = async (id) => {
+  try {
+    const sql = `
+    SELECT *
+    FROM 
+      users
+      inner JOIN
+      posts 
+      on users.id = posts.userid
+      left join
+    
+        (
+          select count(postid) as upvotes, postid
+          from upvotes
+          group by postid
+        ) as upvotes
+    
+      on posts.id = upvotes.postid
+      WHERE posts.id = $1`;
+    const data = await client.query(sql, [id]);
+    return data.rows[0];
   } catch(err) {
     throw err;
   }
@@ -56,5 +98,6 @@ module.exports = {
   getAllUsers,
   getUserById,
   getAllPosts,
+  getPostById,
   getAllPostsByUserId
 }
